@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EBTools - Görsel Dönüştürücü</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <a class="logo" href="../../index.html" style="text-decoration:none">EB<span>Tools</span></a>
+  <div class="lang">
+    <button id="trButton" type="button">Türkçe</button>
+    <button id="enButton" type="button">English</button>
+  </div>
+</header>
+
+<main>
+  <a class="back" href="../../index.html" id="backLink">← Ana sayfa</a>
+  <h1 id="pageTitle">Görsel Dönüştürücü</h1>
+  <p class="subtitle" id="subtitle">Görselini seç, formatını belirle ve dönüştür. İşlemler cihazında yapılır.</p>
+
+  <section class="panel">
+    <label for="fileInput" class="dropzone">
+      <div class="symbol">🖼️</div>
+      <strong id="chooseText">Görsel seçmek için tıkla</strong>
+      <p id="supportedText">PNG, JPG, WebP, BMP veya ICO · Animasyonlu görseller desteklenmez</p>
+      <div id="fileName"></div>
+    </label>
+    <input id="fileInput" type="file" accept="image/png,image/jpeg,image/webp,image/bmp,image/x-ms-bmp,image/gif,image/x-icon,image/vnd.microsoft.icon,.bmp,.gif,.ico">
+         <div class="url-loader">
+      <input
+        type="url"
+        id="imageUrl"
+        placeholder="Görsel URL adresini yapıştır..."
+      >
+      <button type="button" id="loadUrlBtn">URL'den Yükle</button>
+    </div>
+
+    <p id="urlError" style="text-align:center;color:#ff7777;font-size:13px"></p>
+    <div class="preview-wrap">
+      <img id="preview" alt="Görsel önizlemesi">
+    </div>
+    <p id="fileSizeInfo" style="text-align:center;color:#aebbd0;font-size:13px"></p>
+    <p id="resultSizeInfo" style="text-align:center;color:#55c2ff;font-size:14px"></p>
+  </section>
+
+  <section class="panel">
+    <div class="dimensions">
+      <div>
+        <label for="widthInput" id="widthLabel">Genişlik (px)</label>
+        <input type="number" id="widthInput" min="1" max="12000" placeholder="Genişlik">
+      </div>
+      <div>
+        <label for="heightInput" id="heightLabel">Yükseklik (px)</label>
+        <input type="number" id="heightInput" min="1" max="12000" placeholder="Yükseklik">
+      </div>
+    </div>
+          <button id="resetDimensionsButton" type="button" disabled>
+      Orijinal ölçülere dön
+    </button>
+    <div class="checkrow">
+      <input type="checkbox" id="keepRatio" checked>
+      <label for="keepRatio" id="ratioLabel">En-boy oranını koru</label>
+    </div>
+
+    <label for="formatSelect" id="formatLabel">Çıktı formatı</label>
+    <select id="formatSelect">
+      <option value="image/png">PNG</option>
+      <option value="image/jpeg">JPG</option>
+      <option value="image/webp">WebP</option>
+      <option value="image/gif">GIF</option>
+      <option value="image/bmp">BMP</option>
+      <option value="image/x-icon">ICO</option>
+    </select>
+
+    <div style="margin-top:20px">
+      <div class="quality-row">
+        <label for="qualityInput" id="qualityLabel">Görüntü kalitesi</label>
+        <strong id="qualityValue">90%</strong>
+      </div>
+      <input type="range" id="qualityInput" min="10" max="100" value="90">
+      <p id="qualityNote" style="font-size:12px;color:#8794a9;margin-top:5px">Kalite ayarı JPG ve WebP için geçerlidir.</p>
+    </div>
+
+    <div style="margin-top:20px">
+      <label for="targetSizeInput" id="targetSizeLabel">Hedef dosya boyutu (KB) — isteğe bağlı</label>
+      <input type="number" id="targetSizeInput" min="1" max="100000" placeholder="Örn. 500">
+      <p id="targetSizeNote" style="font-size:12px;color:#8794a9;line-height:1.5">
+        Hedef aşılırsa JPG/WebP'de önce kalite, gerekirse piksel ölçüleri ayarlanır. PNG, BMP ve ICO'da piksel ölçüleri küçültülür. Tam hedef garanti değildir.
+      </p>
+    </div>
+
+    <button id="convertButton" class="primary" type="button" disabled>Dönüştür</button>
+    <p id="status" role="status" aria-live="polite"></p>
+    <a id="downloadLink" download="ebtools-image">Dönüştürülen görseli indir</a>
+  </section>
+</main>
+
+<footer id="footerText">EBTools · Ücretsiz çevrimiçi araçlar</footer>
+<script src="https://cdn.jsdelivr.net/npm/gif.js@0.2.0/dist/gif.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

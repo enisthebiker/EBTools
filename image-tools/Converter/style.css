@@ -1,0 +1,100 @@
+
+*{box-sizing:border-box}
+body{margin:0;background:#10141d;color:#e8edf5;font-family:Arial,sans-serif}
+header{background:#171e2b;padding:18px 5%;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;border-bottom:1px solid #2b3547}
+.logo{font-size:25px;font-weight:bold;color:#55c2ff}
+.logo span{color:white}
+button,select,input{font:inherit}
+button{cursor:pointer}
+.lang button{padding:8px 12px;background:#263448;color:white;border:1px solid #40516b;border-radius:6px}
+.lang button.active{background:#1685c5}
+main{max-width:850px;margin:35px auto;padding:0 18px}
+h1{text-align:center;font-size:30px}
+.subtitle{text-align:center;color:#aebbd0;line-height:1.6;margin-bottom:28px}
+.panel{background:#171e2b;border:1px solid #2b3547;border-radius:12px;padding:24px;margin-bottom:20px}
+.dropzone{display:block;border:2px dashed #40516b;border-radius:10px;text-align:center;padding:35px 15px;cursor:pointer;background:#141b27}
+.dropzone:hover{border-color:#55c2ff}
+.dropzone .symbol{font-size:42px}
+.dropzone p{color:#aebbd0;margin-bottom:0}
+#fileInput{display:none}
+#fileName{color:#55c2ff;margin-top:12px;overflow-wrap:anywhere}
+.preview-wrap{text-align:center;margin-top:20px}
+#preview{display:none;max-width:100%;max-height:300px;object-fit:contain;background:repeating-conic-gradient(#293344 0% 25%,#1b2432 0% 50%) 50%/20px 20px;border-radius:8px}
+.dimensions{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+label{display:block;font-size:14px;color:#cbd5e4;margin-bottom:8px}
+input[type=number],select{width:100%;padding:11px;background:#101722;color:#fff;border:1px solid #39475e;border-radius:7px}
+input[type=range]{width:100%;accent-color:#55c2ff}
+.quality-row{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.checkrow{display:flex;align-items:center;gap:9px;margin:17px 0}
+.checkrow label{margin:0}
+.primary{width:100%;border:0;border-radius:8px;background:#1685c5;color:white;font-weight:bold;padding:14px;margin-top:10px}
+.primary:hover{background:#219cde}
+.primary:disabled{opacity:.45;cursor:not-allowed}
+#downloadLink{display:none;text-align:center;margin-top:15px;padding:13px;background:#24563f;color:#d9ffe8;border-radius:7px;text-decoration:none}
+#status{text-align:center;color:#aebbd0;line-height:1.6;overflow-wrap:anywhere}
+.back{color:#55c2ff;text-decoration:none}
+footer{text-align:center;padding:25px;color:#8794a9;font-size:13px}
+@media(max-width:500px){main{margin-top:22px}.panel{padding:17px}h1{font-size:25px}}
+#resetDimensionsButton {
+  display: block;
+  width: 100%;
+  margin-top: 12px;
+  padding: 10px;
+  border: 1px solid #3b82a0;
+  border-radius: 8px;
+  background: #172536;
+  color: #55c2ff;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+#resetDimensionsButton:hover:not(:disabled) {
+  background: #22384d;
+}
+
+#resetDimensionsButton:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.url-loader {
+  display: flex;
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.url-loader input {
+  flex: 1;
+  min-width: 0;
+  padding: 11px;
+  border: 1px solid #354258;
+  border-radius: 7px;
+  background: #171e2b;
+  color: #fff;
+  font-size: 13px;
+  outline: none;
+}
+
+.url-loader input:focus {
+  border-color: #55c2ff;
+}
+
+.url-loader button {
+  padding: 11px 14px;
+  border: none;
+  border-radius: 7px;
+  background: #55c2ff;
+  color: #10141d;
+  font-weight: bold;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.url-loader button:hover {
+  background: #79d0ff;
+}
+
+@media (max-width: 480px) {
+  .url-loader {
+    flex-direction: column;
+  }
+}

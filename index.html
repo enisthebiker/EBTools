@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EBTools - Ücretsiz Çevrimiçi Araçlar</title>
+    <meta name="description" content="EBTools: Görsel, ses, video, PDF, metin ve geliştirici araçları. Ücretsiz ve kolay çevrimiçi araçlar.">
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <div class="logo">EB<span>Tools</span></div>
+
+        <div class="language">
+            <button id="trButton" class="active" type="button">Türkçe</button>
+            <button id="enButton" type="button">English</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="intro">
+            <h1 id="pageTitle">İhtiyacın olan araçlar, tek bir yerde</h1>
+            <p id="pageDescription">
+                Görsellerini dönüştür, dosyalarını düzenle ve günlük işlerini
+                kolaylaştıran ücretsiz araçları keşfet.
+            </p>
+
+            <input
+                type="search"
+                id="toolSearch"
+                class="search"
+                placeholder="Araç ara..."
+                aria-label="Araç ara"
+            >
+        </section>
+
+        <section>
+            <h2 class="section-title" id="categoriesTitle">Araç kategorileri</h2>
+
+            <div class="tools-grid" id="toolsGrid">
+
+                <article class="tool-card" data-search="görsel resim fotoğraf image picture">
+                    <a href="image-tools/index.html">
+                        <div class="tool-icon">🖼️</div>
+                        <h3 data-tr="Görsel Araçları" data-en="Image Tools">Görsel Araçları</h3>
+                        <p data-tr="Resim formatlarını dönüştür, boyutlandır ve sıkıştır."
+                           data-en="Convert, resize and compress image files.">
+                           Resim formatlarını dönüştür, boyutlandır ve sıkıştır.
+                        </p>
+                        <span class="coming-soon"
+                              data-tr="İlk hazırlanacak araç"
+                              data-en="First tool to build">İlk hazırlanacak araç</span>
+                    </a>
+                </article>
+
+                <article class="tool-card" data-search="ses müzik audio sound music">
+                    <div class="tool-icon">🎵</div>
+                    <h3 data-tr="Ses Araçları" data-en="Audio Tools">Ses Araçları</h3>
+                    <p data-tr="Ses dosyalarını dönüştür ve düzenle."
+                       data-en="Convert and edit audio files.">Ses dosyalarını dönüştür ve düzenle.</p>
+                    <span class="coming-soon" data-tr="Yakında" data-en="Coming soon">Yakında</span>
+                </article>
+
+                <article class="tool-card" data-search="video film movie">
+                    <div class="tool-icon">🎬</div>
+                    <h3 data-tr="Video Araçları" data-en="Video Tools">Video Araçları</h3>
+                    <p data-tr="Videolarını dönüştür, kes ve boyutlandır."
+                       data-en="Convert, trim and resize videos.">Videolarını dönüştür, kes ve boyutlandır.</p>
+                    <span class="coming-soon" data-tr="Yakında" data-en="Coming soon">Yakında</span>
+                </article>
+
+                <article class="tool-card" data-search="pdf belge document">
+                    <div class="tool-icon">📄</div>
+                    <h3 data-tr="PDF Araçları" data-en="PDF Tools">PDF Araçları</h3>
+                    <p data-tr="PDF dosyalarını birleştir, ayır ve dönüştür."
+                       data-en="Merge, split and convert PDF files.">PDF dosyalarını birleştir, ayır ve dönüştür.</p>
+                    <span class="coming-soon" data-tr="Yakında" data-en="Coming soon">Yakında</span>
+                </article>
+
+                <article class="tool-card" data-search="metin yazı text writing">
+                    <div class="tool-icon">📝</div>
+                    <h3 data-tr="Metin Araçları" data-en="Text Tools">Metin Araçları</h3>
+                    <p data-tr="Metinleri düzenle, karşılaştır ve biçimlendir."
+                       data-en="Edit, compare and format text.">Metinleri düzenle, karşılaştır ve biçimlendir.</p>
+                    <span class="coming-soon" data-tr="Yakında" data-en="Coming soon">Yakında</span>
+                </article>
+
+                <article class="tool-card" data-search="geliştirici kod developer code web">
+                    <div class="tool-icon">💻</div>
+                    <h3 data-tr="Geliştirici Araçları" data-en="Developer Tools">Geliştirici Araçları</h3>
+                    <p data-tr="Kodlarını biçimlendir ve farklı yardımcı araçları kullan."
+                       data-en="Format code and use handy developer utilities.">Kodlarını biçimlendir ve farklı yardımcı araçları kullan.</p>
+                    <span class="coming-soon" data-tr="Yakında" data-en="Coming soon">Yakında</span>
+                </article>
+
+            </div>
+
+            <p id="noResults" class="hidden">Sonuç bulunamadı.</p>
+        </section>
+    </main>
+
+    <footer id="footerText">
+        Ücretsiz çevrimiçi araçlar · Geliştiren: Enis Baydemir
+    </footer>
+</body>
+</html>
