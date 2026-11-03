@@ -25,10 +25,10 @@
     <label for="fileInput" class="dropzone">
       <div class="symbol">🖼️</div>
       <strong id="chooseText">Görsel seçmek için tıkla</strong>
-      <p id="supportedText">PNG, JPG, WebP, BMP veya ICO · Animasyonlu görseller desteklenmez</p>
+      <p id="supportedText">PNG, JPG, WebP, AVIF, HEIC, HEIF, TIFF, TIF, SVG, BMP, GIF ve ICO · GIF ve çok sayfalı TIFF dosyalarının ilk karesi/sayfası dönüştürülür</p>
       <div id="fileName"></div>
     </label>
-    <input id="fileInput" type="file" accept="image/png,image/jpeg,image/webp,image/bmp,image/x-ms-bmp,image/gif,image/x-icon,image/vnd.microsoft.icon,.bmp,.gif,.ico">
+    <input id="fileInput" type="file" accept="image/png,image/jpeg,image/webp,image/avif,image/heic,image/heif,image/tiff,image/x-tiff,image/svg+xml,image/bmp,image/x-ms-bmp,image/gif,image/x-icon,image/vnd.microsoft.icon,.avif,.heic,.heif,.tif,.tiff,.svg,.bmp,.gif,.ico">
          <div class="url-loader">
       <input
         type="url"
@@ -70,6 +70,9 @@
       <option value="image/png">PNG</option>
       <option value="image/jpeg">JPG</option>
       <option value="image/webp">WebP</option>
+      <option value="image/avif">AVIF</option>
+      <option value="image/heic">HEIC</option>
+      <option value="image/tiff">TIFF</option>
       <option value="image/gif">GIF</option>
       <option value="image/bmp">BMP</option>
       <option value="image/x-icon">ICO</option>
@@ -98,7 +101,17 @@
   </section>
 </main>
 
+<dialog id="svgDimensionsDialog" aria-labelledby="svgDimensionsDialogTitle" aria-describedby="svgDimensionsDialogMessage">
+  <h2 id="svgDimensionsDialogTitle"></h2>
+  <p id="svgDimensionsDialogMessage"></p>
+  <div>
+    <button id="svgDimensionsSetButton" type="button"></button>
+    <button id="svgDimensionsCancelButton" type="button"></button>
+  </div>
+</dialog>
+
 <footer id="footerText">EBTools · Ücretsiz çevrimiçi araçlar</footer>
+<p class="license-link"><a href="../../THIRD-PARTY-LICENSES.md" target="_blank" rel="noopener">Üçüncü taraf lisansları / Third-party licenses</a></p>
 <script src="https://cdn.jsdelivr.net/npm/gif.js@0.2.0/dist/gif.js"></script>
 <script src="script.js"></script>
 </body>
