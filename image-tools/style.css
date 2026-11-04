@@ -15,35 +15,58 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 16px;
-    padding: 20px max(5%, calc((100% - 1100px) / 2));
+    gap: 15px;
+    padding: 22px 6%;
     background: #171e2b;
     border-bottom: 1px solid #2b3547;
+    flex-wrap: wrap;
 }
 
 .logo {
-    color: #fff;
-    font-size: 24px;
+    color: #55c2ff;
+    font-size: 27px;
     font-weight: bold;
     text-decoration: none;
 }
 
-.language {
-    display: flex;
-    gap: 8px;
+.logo span {
+    color: #fff;
 }
 
-button {
-    padding: 8px 12px;
-    border: 1px solid #39465b;
+.language {
+    display: flex;
+    gap: 4px;
+}
+
+.language button {
+    padding: 8px 13px;
+    border: 1px solid #40516b;
     border-radius: 6px;
-    background: #222d3e;
-    color: #e8edf5;
+    background: #263448;
+    color: #fff;
+    min-width: 72px;
+    height: 34px;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 16px;
     cursor: pointer;
 }
 
-button:hover {
+.language button:hover {
     background: #30405a;
+}
+
+html[lang="tr"] #trBtn,
+html[lang="en"] #enBtn {
+    border-color: #1685c5;
+    background: #1685c5;
+}
+
+html[lang="tr"] #enBtn,
+html[lang="en"] #trBtn {
+    border-color: #40516b;
+    background: #263448;
 }
 
 .container {
@@ -133,7 +156,7 @@ footer {
 
 @media (max-width: 480px) {
     .header {
-        padding: 16px 5%;
+        padding: 18px 16px;
     }
 
     .tool-card {

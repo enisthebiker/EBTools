@@ -5,6 +5,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>EBTools - Görsel Dönüştürücü</title>
+<script>
+  (function () {
+    try {
+      var savedLanguage = localStorage.getItem("ebToolsLanguage");
+      if (savedLanguage === "tr" || savedLanguage === "en") {
+        document.documentElement.lang = savedLanguage;
+      }
+    } catch (error) {}
+  })();
+</script>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -17,7 +27,13 @@
 </header>
 
 <main>
-  <a class="back" href="../../index.html" id="backLink">← Ana sayfa</a>
+  <nav class="page-nav" aria-label="Sayfa gezinme">
+    <a class="back previous-page" href="../index.html">
+      <span lang="tr">&#8592; &#214;nceki Sayfa</span>
+      <span lang="en">&#8592; Previous Page</span>
+    </a>
+    <a class="back" href="../../index.html" id="backLink">Ana sayfa</a>
+  </nav>
   <h1 id="pageTitle">Görsel Dönüştürücü</h1>
   <p class="subtitle" id="subtitle">Görselini seç, formatını belirle ve dönüştür. İşlemler cihazında yapılır.</p>
 

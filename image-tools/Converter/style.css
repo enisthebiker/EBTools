@@ -1,13 +1,16 @@
 
 *{box-sizing:border-box}
 body{margin:0;background:#10141d;color:#e8edf5;font-family:Arial,sans-serif}
-header{background:#171e2b;padding:18px 5%;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;border-bottom:1px solid #2b3547}
-.logo{font-size:25px;font-weight:bold;color:#55c2ff}
+header{background:#171e2b;padding:22px 6%;display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap;border-bottom:1px solid #2b3547}
+.logo{font-size:27px;font-weight:bold;color:#55c2ff}
 .logo span{color:white}
 button,select,input{font:inherit}
 button{cursor:pointer}
-.lang button{padding:8px 12px;background:#263448;color:white;border:1px solid #40516b;border-radius:6px}
-.lang button.active{background:#1685c5}
+.lang{display:flex;gap:4px}
+.lang button{padding:8px 13px;background:#263448;color:white;border:1px solid #40516b;border-radius:6px;min-width:72px;height:34px;font:400 13px/16px Arial,sans-serif}
+.lang button.active{background:#1685c5;border-color:#1685c5}
+html[lang="tr"] #trButton,
+html[lang="en"] #enButton{background:#1685c5;border-color:#1685c5}
 main{max-width:850px;margin:35px auto;padding:0 18px}
 h1{text-align:center;font-size:30px}
 .subtitle{text-align:center;color:#aebbd0;line-height:1.6;margin-bottom:28px}
@@ -34,8 +37,11 @@ input[type=range]{width:100%;accent-color:#55c2ff}
 #downloadLink{display:none;text-align:center;margin-top:15px;padding:13px;background:#24563f;color:#d9ffe8;border-radius:7px;text-decoration:none}
 #status{text-align:center;color:#aebbd0;line-height:1.6;overflow-wrap:anywhere}
 .back{color:#55c2ff;text-decoration:none}
-footer{text-align:center;padding:25px;color:#8794a9;font-size:13px}
+footer{text-align:center;padding:25px 25px 6px;color:#8794a9;font-size:13px}
+.license-link{margin:0 0 25px;text-align:center;color:#8794a9;font-size:13px;line-height:inherit}
+.license-link a{color:inherit;font:inherit}
 @media(max-width:500px){main{margin-top:22px}.panel{padding:17px}h1{font-size:25px}}
+@media(max-width:500px){header{padding:18px 16px}}
 #resetDimensionsButton {
   display: block;
   width: 100%;
@@ -181,3 +187,10 @@ footer{text-align:center;padding:25px;color:#8794a9;font-size:13px}
     white-space: normal;
   }
 }
+
+.page-nav{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:12px}
+.page-nav .back{color:#55c2ff;text-decoration:none}
+.page-nav .back:hover{text-decoration:underline}
+html[lang="tr"] .previous-page [lang="en"],
+html[lang="en"] .previous-page [lang="tr"]{display:none}
+@media(max-width:500px){.page-nav{gap:10px;flex-wrap:wrap}.page-nav .back{font-size:14px}}

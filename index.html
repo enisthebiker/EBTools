@@ -7,6 +7,16 @@
     <title>EBTools - Ücretsiz Çevrimiçi Araçlar</title>
     <meta name="description" content="EBTools: Görsel, ses, video, PDF, metin ve geliştirici araçları. Ücretsiz ve kolay çevrimiçi araçlar.">
 
+    <script>
+        (function () {
+            try {
+                var savedLanguage = localStorage.getItem("ebToolsLanguage");
+                if (savedLanguage === "tr" || savedLanguage === "en") {
+                    document.documentElement.lang = savedLanguage;
+                }
+            } catch (error) {}
+        })();
+    </script>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
@@ -16,7 +26,7 @@
         <div class="logo">EB<span>Tools</span></div>
 
         <div class="language">
-            <button id="trButton" class="active" type="button">Türkçe</button>
+            <button id="trButton" type="button">Türkçe</button>
             <button id="enButton" type="button">English</button>
         </div>
     </header>

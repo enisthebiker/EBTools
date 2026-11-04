@@ -6,12 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="EBTools görsel araçları: görsel dönüştürme, boyutlandırma ve daha fazlası.">
     <title>Görsel Araçları | EBTools</title>
+    <script>
+        (function () {
+            try {
+                var savedLanguage = localStorage.getItem("ebToolsLanguage");
+                if (savedLanguage === "tr" || savedLanguage === "en") {
+                    document.documentElement.lang = savedLanguage;
+                }
+            } catch (error) {}
+        })();
+    </script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header class="header">
-        <a class="logo" href="../index.html">EBTools</a>
+        <a class="logo" href="../index.html">EB<span>Tools</span></a>
         <div class="language">
             <button type="button" id="trBtn">Türkçe</button>
             <button type="button" id="enBtn">English</button>
@@ -33,9 +43,9 @@
             <a class="tool-card" href="Converter/index.html">
                 <span class="tool-icon">🔄</span>
                 <h2 data-tr="Görsel Dönüştürücü" data-en="Image Converter">Görsel Dönüştürücü</h2>
-                <p data-tr="PNG, JPG ve WebP formatları arasında dönüştür. Görsel boyutlarını değiştir."
-                   data-en="Convert between PNG, JPG and WebP. Resize your images.">
-                    PNG, JPG ve WebP formatları arasında dönüştür. Görsel boyutlarını değiştir.
+                <p data-tr="Görselleri farklı formatlara dönüştür, boyutlandır ve optimize et."
+                   data-en="Convert images to different formats, resize and optimize them.">
+                    Görselleri farklı formatlara dönüştür, boyutlandır ve optimize et.
                 </p>
                 <span class="tool-link" data-tr="Aracı aç →" data-en="Open tool →">Aracı aç →</span>
             </a>
