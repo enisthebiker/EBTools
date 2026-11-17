@@ -1,0 +1,482 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EBTools - Filigran Ekleme</title>
+
+    <script>
+    (function () {
+        try {
+            const lang = localStorage.getItem("ebToolsLanguage");
+            if (lang === "tr" || lang === "en") {
+                document.documentElement.lang = lang;
+            }
+        } catch (error) {}
+    })();
+    </script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <a class="logo" href="../../index.html">
+        EB<span>Tools</span>
+    </a>
+
+    <div class="lang">
+        <button id="trButton" type="button">Türkçe</button>
+        <button id="enButton" type="button">English</button>
+    </div>
+</header>
+
+<div class="container">
+
+    <nav class="page-nav" aria-label="Page navigation">
+        <a class="back previous-page" href="../index.html">
+            <span lang="tr">← Önceki Sayfa</span>
+            <span lang="en">← Previous Page</span>
+        </a>
+
+        <a class="back" href="../../index.html" id="backLink">
+            Ana sayfa
+        </a>
+    </nav>
+
+    <h1 id="pageTitle">Filigran Ekleme</h1>
+
+    <p class="subtitle" id="subtitle">
+        Görsellerine yazı ve logo ekle. Nesnelerini özgürce düzenle.
+        İşlemler cihazında yapılır.
+    </p>
+
+
+    <!-- EDITOR TOOLBAR -->
+
+    <section class="editor-toolbar">
+
+        <div class="toolbar-left">
+
+            <button type="button" id="uploadImageButton">
+                <span lang="tr">Görsel Yükle</span>
+                <span lang="en">Upload Image</span>
+            </button>
+
+            <button type="button" id="addTextButton">
+                <span lang="tr">+ Yazı</span>
+                <span lang="en">+ Text</span>
+            </button>
+
+            <button type="button" id="addLogoButton">
+                <span lang="tr">+ Logo</span>
+                <span lang="en">+ Logo</span>
+            </button>
+
+            <input
+                type="file"
+                id="imageInput"
+                accept="image/png,image/jpeg,image/webp"
+                hidden
+            >
+
+            <input
+                type="file"
+                id="logoInput"
+                accept="image/png,image/jpeg,image/webp,image/svg+xml"
+                hidden
+            >
+
+        </div>
+
+        <div class="toolbar-right">
+
+            <button type="button" id="undoButton" disabled title="Geri Al">
+                ↶
+            </button>
+
+            <button type="button" id="redoButton" disabled title="Yinele">
+                ↷
+            </button>
+
+            <button type="button" id="fitButton" title="Çalışma alanına sığdır">
+                <span lang="tr">Sığdır</span>
+                <span lang="en">Fit</span>
+            </button>
+
+            <button type="button" id="exportButton">
+                <span lang="tr">Dışa Aktar</span>
+                <span lang="en">Export</span>
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- MAIN EDITOR -->
+
+    <div class="editor-layout">
+
+        <!-- CANVAS AREA -->
+
+        <section class="editor-stage">
+
+            <div class="stage-header">
+                <span lang="tr">Çalışma Alanı</span>
+                <span lang="en">Workspace</span>
+
+                <span id="zoomLabel">100%</span>
+            </div>
+
+            <div class="canvas-viewport" id="canvasViewport">
+
+                <div class="canvas-wrapper" id="canvasWrapper">
+                    <canvas id="editorCanvas" width="1200" height="800"></canvas>
+                </div>
+
+                <div class="canvas-placeholder" id="canvasPlaceholder">
+                    <div class="placeholder-icon">▧</div>
+
+                    <strong lang="tr">Başlamak için bir görsel yükle</strong>
+                    <strong lang="en">Upload an image to get started</strong>
+
+                    <p lang="tr">PNG, JPG veya WebP</p>
+                    <p lang="en">PNG, JPG or WebP</p>
+
+                    <button type="button" id="placeholderUploadButton">
+                        <span lang="tr">Görsel Seç</span>
+                        <span lang="en">Choose Image</span>
+                    </button>
+                </div>
+
+            </div>
+
+            <div class="stage-footer">
+
+                <div class="zoom-controls">
+                    <button type="button" id="zoomOutButton">−</button>
+                    <span id="zoomValue">100%</span>
+                    <button type="button" id="zoomInButton">+</button>
+                </div>
+
+                <span id="canvasDimensions">1200 × 800</span>
+
+            </div>
+
+        </section>
+
+
+        <!-- RIGHT SIDEBAR -->
+
+        <aside class="editor-sidebar">
+
+            <div class="sidebar-tabs">
+
+                <button
+                    type="button"
+                    class="sidebar-tab active"
+                    data-tab="propertiesPanel"
+                >
+                    <span lang="tr">Özellikler</span>
+                    <span lang="en">Properties</span>
+                </button>
+
+                <button
+                    type="button"
+                    class="sidebar-tab"
+                    data-tab="layersPanel"
+                >
+                    <span lang="tr">Katmanlar</span>
+                    <span lang="en">Layers</span>
+                </button>
+
+            </div>
+
+
+            <!-- PROPERTIES -->
+
+            <section class="sidebar-content active" id="propertiesPanel">
+
+                <div id="noSelection">
+
+                    <h3>
+                        <span lang="tr">Belge Ayarları</span>
+                        <span lang="en">Document Settings</span>
+                    </h3>
+
+                    <p lang="tr">
+                        Düzenlemek için çalışma alanındaki bir nesneyi seç.
+                    </p>
+
+                    <p lang="en">
+                        Select an object on the workspace to edit it.
+                    </p>
+
+                </div>
+
+
+                <div id="objectProperties" hidden>
+
+                    <h3>
+                        <span lang="tr">Seçili Nesne</span>
+                        <span lang="en">Selected Object</span>
+                    </h3>
+
+                    <label for="objectName">
+                        <span lang="tr">Katman adı</span>
+                        <span lang="en">Layer name</span>
+                    </label>
+
+                    <input type="text" id="objectName">
+
+
+                    <!-- TEXT PROPERTIES -->
+
+                    <div id="textProperties" hidden>
+
+                        <label for="objectText">
+                            <span lang="tr">Yazı içeriği</span>
+                            <span lang="en">Text content</span>
+                        </label>
+
+                        <textarea id="objectText" rows="3"></textarea>
+
+                        <label for="fontFamily">
+                            <span lang="tr">Yazı tipi</span>
+                            <span lang="en">Font family</span>
+                        </label>
+
+                        <select id="fontFamily">
+                            <option value="Arial">Arial</option>
+                            <option value="Verdana">Verdana</option>
+                            <option value="Tahoma">Tahoma</option>
+                            <option value="Georgia">Georgia</option>
+                            <option value="Times New Roman">Times New Roman</option>
+                            <option value="Courier New">Courier New</option>
+                        </select>
+
+                        <label for="fontSize">
+                            <span lang="tr">Yazı boyutu</span>
+                            <span lang="en">Font size</span>
+                        </label>
+
+                        <input type="number" id="fontSize" min="1" max="500" value="48">
+
+                        <label for="fontColor">
+                            <span lang="tr">Yazı rengi</span>
+                            <span lang="en">Text color</span>
+                        </label>
+
+                        <input type="color" id="fontColor" value="#ffffff">
+
+                        <div class="checkbox-row">
+
+                            <label>
+                                <input type="checkbox" id="fontBold">
+                                <span lang="tr">Kalın</span>
+                                <span lang="en">Bold</span>
+                            </label>
+
+                            <label>
+                                <input type="checkbox" id="fontItalic">
+                                <span lang="tr">İtalik</span>
+                                <span lang="en">Italic</span>
+                            </label>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- COMMON PROPERTIES -->
+
+                    <div class="property-group">
+
+                        <h4>
+                            <span lang="tr">Görünüm</span>
+                            <span lang="en">Appearance</span>
+                        </h4>
+
+                        <label for="objectOpacity">
+                            <span lang="tr">Şeffaflık</span>
+                            <span lang="en">Opacity</span>
+                        </label>
+
+                        <div class="range-row">
+                            <input type="range" id="objectOpacity" min="0" max="100" value="100">
+                            <span id="opacityValue">100%</span>
+                        </div>
+
+                        <label for="objectRotation">
+                            <span lang="tr">Döndürme</span>
+                            <span lang="en">Rotation</span>
+                        </label>
+
+                        <div class="range-row">
+                            <input type="range" id="objectRotation" min="-180" max="180" value="0">
+                            <span id="rotationValue">0°</span>
+                        </div>
+
+                    </div>
+
+
+                    <!-- POSITION -->
+
+                    <div class="property-group">
+
+                        <h4>
+                            <span lang="tr">Konum ve Boyut</span>
+                            <span lang="en">Position and Size</span>
+                        </h4>
+
+                        <div class="dimension-grid">
+
+                            <label>
+                                X
+                                <input type="number" id="objectX">
+                            </label>
+
+                            <label>
+                                Y
+                                <input type="number" id="objectY">
+                            </label>
+
+                            <label>
+                                W
+                                <input type="number" id="objectWidth">
+                            </label>
+
+                            <label>
+                                H
+                                <input type="number" id="objectHeight">
+                            </label>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- OBJECT ACTIONS -->
+
+                    <div class="property-group object-actions">
+
+                        <button type="button" id="duplicateButton">
+                            <span lang="tr">Çoğalt</span>
+                            <span lang="en">Duplicate</span>
+                        </button>
+
+                        <button type="button" id="deleteButton">
+                            <span lang="tr">Sil</span>
+                            <span lang="en">Delete</span>
+                        </button>
+
+                        <button type="button" id="lockButton">
+                            <span lang="tr">Kilitle</span>
+                            <span lang="en">Lock</span>
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- LAYERS -->
+
+            <section class="sidebar-content" id="layersPanel">
+
+                <div class="layers-header">
+    <h3><span lang="tr">Katmanlar</span><span lang="en">Layers</span></h3>
+
+    <div class="layer-order-controls">
+        <button type="button" id="layerUpButton" title="Öne al">
+            ↑
+        </button>
+        <button type="button" id="layerDownButton" title="Arkaya al">
+            ↓
+        </button>
+        <span id="layerCount">0</span>
+    </div>
+</div>
+
+                <div id="layerList">
+
+                    <p id="emptyLayers">
+                        <span lang="tr">Henüz katman yok.</span>
+                        <span lang="en">No layers yet.</span>
+                    </p>
+
+                </div>
+
+            </section>
+
+        </aside>
+
+    </div>
+
+
+    <!-- EXPORT SETTINGS -->
+
+    <section class="export-panel">
+
+        <h2>
+            <span lang="tr">Dışa Aktarma</span>
+            <span lang="en">Export</span>
+        </h2>
+
+        <div class="export-options">
+
+            <label for="exportFormat">
+                <span lang="tr">Format</span>
+                <span lang="en">Format</span>
+            </label>
+
+            <select id="exportFormat">
+                <option value="png">PNG</option>
+                <option value="jpeg">JPG</option>
+                <option value="webp">WebP</option>
+            </select>
+
+            <label for="exportQuality">
+                <span lang="tr">Kalite</span>
+                <span lang="en">Quality</span>
+            </label>
+
+            <input type="range" id="exportQuality" min="10" max="100" value="90">
+
+            <span id="exportQualityValue">90%</span>
+
+        </div>
+
+        <p id="statusMessage" role="status" aria-live="polite"></p>
+
+    </section>
+
+</div>
+
+
+<footer>
+    <p id="footerText">EBTools · Ücretsiz çevrimiçi araçlar</p>
+
+    <p class="license-link">
+        <a href="../../THIRD-PARTY-LICENSES.md"
+           target="_blank"
+           rel="noopener">
+            Third-party licenses / Üçüncü taraf lisansları
+        </a>
+    </p>
+</footer>
+
+
+<!-- Fabric.js -->
+<script src="https://cdn.jsdelivr.net/npm/fabric@6.4.3/dist/index.min.js"></script>
+
+<!-- EBTools -->
+<script src="script.js"></script>
+
+</body>
+</html>
