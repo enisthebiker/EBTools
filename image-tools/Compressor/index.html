@@ -1,0 +1,201 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EBTools - Görsel Sıkıştırma</title>
+
+<script>
+(function () {
+    try {
+        const lang = localStorage.getItem("ebToolsLanguage");
+        if (lang === "tr" || lang === "en") {
+            document.documentElement.lang = lang;
+        }
+    } catch (error) {}
+})();
+</script>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <a class="logo" href="../../index.html">
+        EB<span>Tools</span>
+    </a>
+
+    <div class="lang">
+        <button id="trButton" type="button">Türkçe</button>
+        <button id="enButton" type="button">English</button>
+    </div>
+</header>
+
+<div class="container">
+
+    <nav class="page-nav" aria-label="Page navigation">
+        <a class="back previous-page" href="../index.html">
+            <span lang="tr">← Önceki Sayfa</span>
+            <span lang="en">← Previous Page</span>
+        </a>
+
+        <a class="back" href="../../index.html" id="backLink">
+            Ana sayfa
+        </a>
+    </nav>
+
+    <h1 id="pageTitle">Görsel Sıkıştırma</h1>
+
+    <p class="subtitle" id="subtitle">
+        Görsellerinin dosya boyutunu küçült. İşlemler cihazında yapılır.
+    </p>
+
+    <!-- DOSYA SEÇİMİ -->
+
+    <section class="panel">
+
+        <label for="fileInput" class="dropzone" id="dropzone">
+
+            <div class="symbol">🗜️</div>
+
+            <strong id="chooseText">
+                Görselleri seçmek için tıkla veya sürükleyip bırak
+            </strong>
+
+            <p id="supportedText">
+                JPG, PNG, WebP, AVIF, HEIC, HEIF, TIFF, BMP, GIF ve ICO desteklenir.
+                GIF ve TIFF dosyalarının yalnızca ilk karesi/sayfası işlenir.
+            </p>
+
+        </label>
+
+        <input
+            id="fileInput"
+            type="file"
+            accept="image/png,image/jpeg,image/webp,image/avif,image/heic,image/heif,image/tiff,image/x-tiff,image/bmp,image/x-ms-bmp,image/gif,image/x-icon,image/vnd.microsoft.icon,.jpg,.jpeg,.png,.webp,.avif,.heic,.heif,.tif,.tiff,.bmp,.gif,.ico"
+            multiple
+        >
+
+        <div class="queue-header">
+
+            <div id="queueSummary">
+                Henüz görsel seçilmedi.
+            </div>
+
+            <button id="clearButton" type="button" disabled>
+                <span lang="tr">Listeyi temizle</span>
+                <span lang="en">Clear list</span>
+            </button>
+
+        </div>
+
+        <div id="fileList"></div>
+
+    </section>
+
+    <!-- SIKIŞTIRMA AYARLARI -->
+
+    <section class="panel">
+
+        <h2 id="settingsTitle">
+            Sıkıştırma ayarları
+        </h2>
+
+        <div class="quality-section">
+
+            <div class="quality-row">
+
+                <label for="qualityInput" id="qualityLabel">
+                    Görüntü kalitesi
+                </label>
+
+                <strong id="qualityValue">85%</strong>
+
+            </div>
+
+            <input
+                type="range"
+                id="qualityInput"
+                min="10"
+                max="100"
+                value="85"
+            >
+
+            <p id="qualityNote">
+                Kalite ayarı desteklenen formatlarda dosya boyutunu etkiler.
+            </p>
+
+        </div>
+
+        <div class="target-section">
+
+            <label for="targetSizeInput" id="targetSizeLabel">
+                Hedef dosya boyutu (KB) - isteğe bağlı
+            </label>
+
+            <input
+                type="number"
+                id="targetSizeInput"
+                min="1"
+                max="100000"
+                placeholder="Örn. 500"
+            >
+
+            <p id="targetSizeNote">
+                Hedef boyuta ulaşmak için gerektiğinde görüntü kalitesi veya
+                çözünürlük otomatik olarak ayarlanabilir. Tam hedef garanti değildir.
+            </p>
+
+        </div>
+
+        <button
+            id="compressButton"
+            class="primary"
+            type="button"
+            disabled
+        >
+            <span lang="tr">Tüm görselleri sıkıştır</span>
+            <span lang="en">Compress all images</span>
+        </button>
+
+        <p id="status" role="status" aria-live="polite"></p>
+
+    </section>
+
+    <!-- SIKIŞTIRMA SONUÇLARI -->
+
+    <section class="result-panel" id="resultPanel" hidden>
+
+        <h2 id="resultTitle">
+            Sıkıştırma sonuçları
+        </h2>
+
+        <div id="totalSummary"></div>
+
+        <div id="resultList"></div>
+
+    </section>
+
+  </div>
+
+<footer id="footerText">
+    EBTools · Ücretsiz çevrimiçi araçlar
+</footer>
+
+<p class="license-link">
+    <a
+        href="../../THIRD-PARTY-LICENSES.md"
+        target="_blank"
+        rel="noopener"
+    >
+        Third-party licenses / Üçüncü taraf lisansları
+    </a>
+</p>
+
+<script src="https://cdn.jsdelivr.net/npm/gif.js@0.2.0/dist/gif.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
