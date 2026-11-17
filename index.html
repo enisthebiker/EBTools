@@ -1,12 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>EBTools - Ücretsiz Çevrimiçi Araçlar</title>
-    <meta name="description" content="EBTools: Görsel, ses, video, PDF, metin ve geliştirici araçları. Ücretsiz ve kolay çevrimiçi araçlar.">
-
+    <meta name="description" content="EBTools görsel araçları: görsel dönüştürme, boyutlandırma ve daha fazlası.">
+    <title>Görsel Araçları | EBTools</title>
     <script>
         (function () {
             try {
@@ -18,103 +17,98 @@
         })();
     </script>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
 </head>
-
 <body>
-    <header>
-        <div class="logo">EB<span>Tools</span></div>
 
+    <header class="header">
+        <a class="logo" href="../index.html">EB<span>Tools</span></a>
         <div class="language">
-            <button id="trButton" type="button">Türkçe</button>
-            <button id="enButton" type="button">English</button>
+            <button type="button" id="trBtn">Türkçe</button>
+            <button type="button" id="enBtn">English</button>
         </div>
     </header>
 
-    <main>
-        <section class="intro">
-            <h1 id="pageTitle">İhtiyacın olan araçlar, tek bir yerde</h1>
-            <p id="pageDescription">
-                Görsellerini dönüştür, dosyalarını düzenle ve günlük işlerini
-                kolaylaştıran ücretsiz araçları keşfet.
-            </p>
+    <main class="container">
+        <a class="back-link" href="../index.html" data-tr="← Ana sayfa" data-en="← Home">← Ana sayfa</a>
 
-            <input
-                type="search"
-                id="toolSearch"
-                class="search"
-                placeholder="Araç ara..."
-                aria-label="Araç ara"
-            >
+        <section class="intro">
+            <h1 data-tr="Görsel Araçları" data-en="Image Tools">Görsel Araçları</h1>
+            <p data-tr="Görsellerini düzenlemek ve dönüştürmek için bir araç seç."
+               data-en="Choose a tool to edit and convert your images.">
+                Görsellerini düzenlemek ve dönüştürmek için bir araç seç.
+            </p>
         </section>
 
-        <section>
-            <h2 class="section-title" id="categoriesTitle">Araç kategorileri</h2>
+        <section class="tools-grid">
+            <a class="tool-card" href="Converter/index.html">
+                <span class="tool-icon">🔁</span>
+                <h2 data-tr="Görsel Dönüştürücü" data-en="Image Converter">Görsel Dönüştürücü</h2>
+                <p data-tr="Görselleri farklı formatlara dönüştür, boyutlandır ve optimize et."
+                   data-en="Convert images to different formats, resize and optimize them.">
+                    Görselleri farklı formatlara dönüştür, boyutlandır ve optimize et.
+                </p>
+                <span class="tool-link" data-tr="Aracı aç →" data-en="Open tool →">Aracı aç →</span>
+            </a>
+    
+<a class="tool-card" href="Rotate/index.html">
 
-            <div class="tools-grid" id="toolsGrid">
+    <span class="tool-icon">🔄</span>
 
-                <article class="tool-card" data-search="görsel resim fotoğraf image picture">
-                    <a href="image-tools/index.html">
-                        <div class="tool-icon">🖼️</div>
-                        <h3 data-tr="Görsel Araçları" data-en="Image Tools">Görsel Araçları</h3>
-                        <p data-tr="Resim formatlarını dönüştür, boyutlandır ve sıkıştır."
-                           data-en="Convert, resize and compress image files.">
-                           Resim formatlarını dönüştür, boyutlandır ve sıkıştır.
-                        </p>
-                        <span class="coming-soon"
-                              data-tr="İlk hazırlanacak araç"
-                              data-en="First tool to build">İlk hazırlanacak araç</span>
-                    </a>
-                </article>
+    <h2 data-tr="Döndürme ve Aynalama"
+        data-en="Rotate and Flip">
+        Döndürme ve Aynalama
+    </h2>
 
-                <article class="tool-card" data-search="ses müzik audio sound music">
-                    <div class="tool-icon">🎵</div>
-                    <h3 data-tr="Ses Araçları" data-en="Audio Tools">Ses Araçları</h3>
-                    <p data-tr="Ses dosyalarını dönüştür ve düzenle."
-                       data-en="Convert and edit audio files.">Ses dosyalarını dönüştür ve düzenle.</p>
-                    <span class="coming-soon" data-tr="Yakında" data-en="Coming soon">Yakında</span>
-                </article>
+    <p data-tr="Görselleri sağa veya sola döndür, yatay ve dikey aynala."
+       data-en="Rotate images left or right, flip horizontally and vertically.">
+        Görselleri sağa veya sola döndür, yatay ve dikey aynala.
+    </p>
 
-                <article class="tool-card" data-search="video film movie">
-                    <div class="tool-icon">🎬</div>
-                    <h3 data-tr="Video Araçları" data-en="Video Tools">Video Araçları</h3>
-                    <p data-tr="Videolarını dönüştür, kes ve boyutlandır."
-                       data-en="Convert, trim and resize videos.">Videolarını dönüştür, kes ve boyutlandır.</p>
-                    <span class="coming-soon" data-tr="Yakında" data-en="Coming soon">Yakında</span>
-                </article>
+    <span class="tool-link"
+          data-tr="Aracı aç →"
+          data-en="Open tool →">
+        Aracı aç →
+    </span>
 
-                <article class="tool-card" data-search="pdf belge document">
-                    <div class="tool-icon">📄</div>
-                    <h3 data-tr="PDF Araçları" data-en="PDF Tools">PDF Araçları</h3>
-                    <p data-tr="PDF dosyalarını birleştir, ayır ve dönüştür."
-                       data-en="Merge, split and convert PDF files.">PDF dosyalarını birleştir, ayır ve dönüştür.</p>
-                    <span class="coming-soon" data-tr="Yakında" data-en="Coming soon">Yakında</span>
-                </article>
+</a>
 
-                <article class="tool-card" data-search="metin yazı text writing">
-                    <div class="tool-icon">📝</div>
-                    <h3 data-tr="Metin Araçları" data-en="Text Tools">Metin Araçları</h3>
-                    <p data-tr="Metinleri düzenle, karşılaştır ve biçimlendir."
-                       data-en="Edit, compare and format text.">Metinleri düzenle, karşılaştır ve biçimlendir.</p>
-                    <span class="coming-soon" data-tr="Yakında" data-en="Coming soon">Yakında</span>
-                </article>
+            <a class="tool-card" href="Compressor/index.html">
+                <span class="tool-icon">🗜️</span>
+                <h2 data-tr="Görsel Sıkıştırma" data-en="Image Compression">Görsel Sıkıştırma</h2>
+                <p data-tr="Dosya boyutunu küçültmek için hazırlanıyor."
+                   data-en="Coming soon: reduce image file sizes.">
+                    Dosya boyutunu küçültmek için hazırlanıyor.
+                </p>
+                <span class="tool-link" data-tr="Aracı aç →" data-en="Open tool →">Aracı aç</span>
+           </a>
+    
+<a class="tool-card" href="Watermark/index.html">
+    <span class="tool-icon">©️</span>
+    <h2 data-tr="Filigran Ekleme" data-en="Add Watermark">Filigran Ekleme</h2>
+    <p data-tr="Görsellerine yazı veya logo filigranı ekle."
+       data-en="Add text or logo watermarks to your images.">
+        Görsellerine yazı veya logo filigranı ekle.
+    </p>
+    <span class="tool-link" data-tr="Aracı aç →" data-en="Open tool →">Aracı aç</span>
+</a>
 
-                <article class="tool-card" data-search="geliştirici kod developer code web">
-                    <div class="tool-icon">💻</div>
-                    <h3 data-tr="Geliştirici Araçları" data-en="Developer Tools">Geliştirici Araçları</h3>
-                    <p data-tr="Kodlarını biçimlendir ve farklı yardımcı araçları kullan."
-                       data-en="Format code and use handy developer utilities.">Kodlarını biçimlendir ve farklı yardımcı araçları kullan.</p>
-                    <span class="coming-soon" data-tr="Yakında" data-en="Coming soon">Yakında</span>
-                </article>
 
+            <div class="tool-card coming-soon">
+                <span class="tool-icon">✂️</span>
+                <h2 data-tr="Görsel Kırpma" data-en="Image Cropper">Görsel Kırpma</h2>
+                <p data-tr="Görsellerin istediğin bölümünü kırpmak için hazırlanıyor."
+                   data-en="Coming soon: crop the parts of an image you need.">
+                    Görsellerin istediğin bölümünü kırpmak için hazırlanıyor.
+                </p>
+                <span class="tool-link" data-tr="Yakında" data-en="Coming soon">Yakında</span>
             </div>
-
-            <p id="noResults" class="hidden">Sonuç bulunamadı.</p>
         </section>
     </main>
 
-    <footer id="footerText">
-        Ücretsiz çevrimiçi araçlar · Geliştiren: Enis Baydemir
+    <footer>
+        EBTools · <span data-tr="Ücretsiz çevrimiçi araçlar" data-en="Free online tools">Ücretsiz çevrimiçi araçlar</span>
     </footer>
+
+    <script src="script.js" defer></script>
 </body>
 </html>
