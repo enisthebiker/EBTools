@@ -1,0 +1,366 @@
+
+:root {
+    --bg-color: #10141d;
+    --panel-color: #171e2b;
+    --accent-color: #55c2ff;
+    --text-color: #e8edf5;
+    --muted-color: #aebbd0;
+    --border-color: #2b3547;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--bg-color);
+    color: var(--text-color);
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+}
+
+/* Header */
+
+header {
+    background: var(--panel-color);
+    padding: 22px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.logo {
+    font-size: 27px;
+    font-weight: bold;
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+.logo span {
+    color: white;
+}
+
+button {
+    font: inherit;
+    cursor: pointer;
+}
+
+.lang {
+    display: flex;
+    gap: 4px;
+}
+
+.lang button {
+    padding: 8px 13px;
+    background: #263448;
+    color: white;
+    border: 1px solid #40516b;
+    border-radius: 6px;
+    min-width: 72px;
+    height: 34px;
+    font: 400 13px/16px Arial, sans-serif;
+}
+
+.lang button.active,
+html[lang="tr"] #trButton,
+html[lang="en"] #enButton {
+    background: #1685c5;
+    border-color: #1685c5;
+}
+
+/* Main */
+
+main {
+    max-width: 850px;
+    margin: 35px auto;
+    padding: 0 18px;
+}
+
+.page-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 12px;
+}
+
+.back {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+.back:hover {
+    text-decoration: underline;
+}
+
+html[lang="tr"] .previous-page [lang="en"],
+html[lang="en"] .previous-page [lang="tr"] {
+    display: none;
+}
+
+h1 {
+    text-align: center;
+    font-size: 30px;
+}
+
+.subtitle {
+    text-align: center;
+    color: var(--muted-color);
+    line-height: 1.6;
+    margin-bottom: 28px;
+}
+
+/* Panels */
+
+.panel {
+    background: var(--panel-color);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 20px;
+}
+
+.panel h2 {
+    font-size: 18px;
+    margin: 0 0 18px;
+}
+
+.panel h2:not(:first-child) {
+    margin-top: 28px;
+}
+
+/* File selection */
+
+#fileInput {
+    display: none;
+}
+
+.dropzone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 165px;
+    padding: 35px 15px;
+    border: 2px dashed #40516b;
+    border-radius: 10px;
+    cursor: pointer;
+    background: #141b27;
+    transition: 0.2s;
+}
+
+.dropzone:hover {
+    border-color: var(--accent-color);
+}
+.dropzone.dragover {
+    border-color: #55c2ff;
+    background: #1b2c40;
+    box-shadow: 0 0 0 3px rgba(85, 194, 255, .18);
+}
+.dropzone .symbol {
+    font-size: 42px;
+    margin-bottom: 12px;
+}
+
+.dropzone strong {
+    font-size: 16px;
+    color: var(--text-color);
+}
+
+.dropzone p {
+    color: var(--muted-color);
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 0;
+}
+
+#fileName {
+    color: var(--accent-color);
+    margin-top: 12px;
+    font-size: 13px;
+    overflow-wrap: anywhere;
+}
+
+/* Preview */
+
+.preview-wrap {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    padding: 20px;
+    min-height: 180px;
+    background:
+        linear-gradient(45deg, #202938 25%, transparent 25%),
+        linear-gradient(-45deg, #202938 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #202938 75%),
+        linear-gradient(-45deg, transparent 75%, #202938 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0;
+    border-radius: 8px;
+}
+
+.preview-wrap img {
+    display: block;
+    max-width: 100%;
+    max-height: 300px;
+    object-fit: contain;
+    transition: transform 0.2s ease;
+}
+
+#fileInfo {
+    color: var(--muted-color);
+    font-size: 13px;
+    text-align: center;
+    margin: 12px 0 0;
+}
+
+/* Buttons */
+
+.control-group,
+.action-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.control-group button,
+.action-group button {
+    flex: 1;
+    min-width: 145px;
+    min-height: 44px;
+    padding: 11px 16px;
+    border: 1px solid #40516b;
+    border-radius: 7px;
+    background: #263448;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.control-group button:hover:not(:disabled),
+.action-group button:hover:not(:disabled) {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+.action-group {
+    margin-top: 30px;
+    padding-top: 22px;
+    border-top: 1px solid var(--border-color);
+}
+
+.action-group button.primary {
+    width: 100%;
+    border: 0;
+    border-radius: 8px;
+    background: #1685c5;
+    color: white;
+    font-weight: bold;
+    padding: 14px;
+    margin-top: 10px;
+}
+
+.action-group button.primary:hover:not(:disabled) {
+    background: #219cde;
+}
+
+button:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+/* Status */
+
+#status {
+    text-align: center;
+    color: var(--muted-color);
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+    margin: 18px 0 0;
+    font-size: 13px;
+}
+
+/* Footer */
+
+footer {
+    width: 100%;
+    padding: 24px 16px 8px;
+    border-top: 1px solid #2b3547;
+    color: #8793a7;
+    background: #171e2b;
+    text-align: center;
+    font-size: 14px;
+}
+
+.license-link {
+    margin: 0;
+    padding: 0 16px 22px;
+    background: #171e2b;
+    text-align: center;
+    font-size: 13px;
+}
+
+.license-link a {
+    color: inherit;
+    font: inherit;
+    text-decoration: none;
+}
+
+.license-link a:hover {
+    color: var(--accent-color);
+}
+
+/* Mobile */
+
+@media (max-width: 500px) {
+    header {
+        padding: 18px 16px;
+    }
+
+    main {
+        margin-top: 22px;
+    }
+
+    h1 {
+        font-size: 25px;
+    }
+
+    .panel {
+        padding: 17px;
+    }
+
+    .page-nav {
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .page-nav .back {
+        font-size: 14px;
+    }
+
+    .control-group,
+    .action-group {
+        flex-direction: column;
+    }
+
+    .control-group button,
+    .action-group button {
+        width: 100%;
+    }
+
+    .preview-wrap {
+        padding: 12px;
+        min-height: 140px;
+    }
+
+    .preview-wrap img {
+        max-height: 300px;
+    }
+}

@@ -1,0 +1,162 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EBTools - Döndürme ve Aynalama</title>
+
+    <script>
+        (function () {
+            try {
+                var savedLanguage = localStorage.getItem("ebToolsLanguage");
+                if (savedLanguage === "tr" || savedLanguage === "en") {
+                    document.documentElement.lang = savedLanguage;
+                }
+            } catch (error) {}
+        })();
+    </script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <a class="logo" href="../../index.html" style="text-decoration:none">
+        EB<span>Tools</span>
+    </a>
+
+    <div class="lang">
+        <button id="trButton" type="button">Türkçe</button>
+        <button id="enButton" type="button">English</button>
+    </div>
+</header>
+
+<main>
+
+    <nav class="page-nav" aria-label="Sayfa gezinme">
+        <a class="back previous-page" href="../index.html">
+            <span lang="tr">← Önceki Sayfa</span>
+            <span lang="en">← Previous Page</span>
+        </a>
+
+        <a class="back" href="../../index.html" id="backLink">
+            Ana sayfa
+        </a>
+    </nav>
+
+    <h1 id="pageTitle">Döndürme ve Aynalama</h1>
+
+    <p class="subtitle" id="subtitle">
+        Görsellerini döndür, aynala ve istediğin yönde düzenle.
+        İşlemler cihazında yapılır.
+    </p>
+
+    <!-- Görsel seçimi ve önizleme -->
+    <section class="panel">
+
+        <label for="fileInput" class="dropzone">
+            <div class="symbol">🖼️</div>
+
+            <strong id="chooseText">
+                Görsel seçmek için tıkla
+            </strong>
+
+            <p id="supportedText">
+                PNG, JPG, WebP, GIF, BMP ve diğer yaygın görsel formatları
+            </p>
+
+            <div id="fileName"></div>
+        </label>
+
+        <input
+            type="file"
+            id="fileInput"
+            accept="image/png,image/jpeg,image/webp,image/avif,image/heic,image/heif,image/tiff,image/x-tiff,image/svg+xml,image/bmp,image/x-ms-bmp,image/gif,image/x-icon,image/vnd.microsoft.icon,.avif,.heic,.heif,.tif,.tiff,.svg,.bmp,.gif,.ico"
+        >
+
+        <div class="preview-wrap" id="previewWrap">
+            <img id="preview" alt="Görsel önizlemesi">
+        </div>
+
+        <p id="fileInfo"></p>
+
+    </section>
+
+    <!-- Döndürme ve aynalama kontrolleri -->
+    <section class="panel">
+
+        <h2 id="rotateTitle">Döndürme</h2>
+
+        <div class="control-group">
+
+            <button type="button" id="rotateLeftButton" disabled>
+                ↶ <span id="rotateLeftText">Sola 90°</span>
+            </button>
+
+            <button type="button" id="rotateRightButton" disabled>
+                ↷ <span id="rotateRightText">Sağa 90°</span>
+            </button>
+
+        </div>
+
+        <h2 id="flipTitle">Aynalama</h2>
+
+        <div class="control-group">
+
+            <button type="button" id="flipHorizontalButton" disabled>
+                ↔ <span id="flipHorizontalText">Yatay Aynala</span>
+            </button>
+
+            <button type="button" id="flipVerticalButton" disabled>
+                ↕ <span id="flipVerticalText">Dikey Aynala</span>
+            </button>
+
+        </div>
+
+        <div class="action-group">
+
+            <button
+                type="button"
+                id="resetButton"
+                disabled
+            >
+                ↺ <span id="resetText">Orijinal Hâline Döndür</span>
+            </button>
+
+            <button
+                type="button"
+                id="downloadButton"
+                class="primary"
+                disabled
+            >
+                ↓ <span id="downloadText">Görseli İndir</span>
+            </button>
+
+        </div>
+
+        <p id="status" role="status" aria-live="polite"></p>
+
+    </section>
+
+</main>
+
+<footer id="footerText">
+    EBTools · Ücretsiz çevrimiçi araçlar
+</footer>
+
+<p class="license-link">
+    <a
+        href="../../THIRD-PARTY-LICENSES.md"
+        target="_blank"
+        rel="noopener"
+    >
+        Third-party licenses / Üçüncü taraf lisansları
+    </a>
+</p>
+<script src="https://cdn.jsdelivr.net/npm/gif.js@0.2.0/dist/gif.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
